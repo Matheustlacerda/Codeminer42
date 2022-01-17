@@ -1,3 +1,8 @@
-file = File.foreach('games.log').first
+class Main
+  def open_file(file)
+    file = file.foreach('games.log').first
+    puts file
+  end
+end
 
-puts file
+Main.new.open_file("games.log")
