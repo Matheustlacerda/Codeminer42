@@ -1,0 +1,1 @@
+puts File.foreach('games.log').first
