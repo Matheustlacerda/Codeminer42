@@ -1,7 +1,7 @@
 require 'spec_helper'
 require_relative "../lib/read_file"
 
-describe 'ReadFile' do
+describe '#open_file' do
   it 'must have the text' do
     first_line = ReadFile.new.open_file('spec/test_file.log')
 
