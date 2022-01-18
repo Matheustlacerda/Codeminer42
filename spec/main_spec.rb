@@ -1,16 +1,16 @@
 require 'spec_helper'
-require_relative "../main"
+require_relative "../lib/read_file"
 
-describe 'Main' do
+describe 'ReadFile' do
   it 'must have the text' do
-    first_line = Main.new.open_file('games.log')
+    first_line = ReadFile.new.open_file('spec/test_file.log')
 
     expect(first_line).to eq('0:00 ------------------------------------------------------------')
 
   end
 
   it 'must return error' do
-    first_line = Main.new.open_file('games.txt')
+    first_line = ReadFile.new.open_file('games.txt')
 
     expect(first_line).to eq('error: not the right file')
   end
