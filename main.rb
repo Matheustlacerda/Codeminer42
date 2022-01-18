@@ -1,4 +1,4 @@
-require_relative "read_file"
+require_relative "lib/read_file"
 
 file = ReadFile.new.open_file("games.log")
 
