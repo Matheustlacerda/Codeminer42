@@ -1,5 +1,5 @@
-require_relative "lib/read_file"
+require_relative "lib/log_parser"
 
-file = ReadFile.new.open_file("games.log")
+file = LogParser.new('games.log')
 
-puts file
+puts file.read_first_line

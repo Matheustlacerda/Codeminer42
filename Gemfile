@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'activesupport'
+ruby '3.1.0'
+
 gem 'rake'
 gem 'rspec'

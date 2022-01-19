@@ -27,8 +27,11 @@ After reboot the system run:
  ``` $ rvm install ruby 3.1.0 ```
 
 
-### To run the tests, you need to run the command:
+### To install all the dependences for the application, run:
  ``` $ bundle install ```
 
- ### and to check the tests run
+ ## To run the application:
+   ```ruby main.rb  ```
+
+ ### and to check the application tests, run:
  ``` $ rspec ```
