@@ -6,14 +6,14 @@ describe '#read_first_line' do
   end
 
   it 'must have the text' do 
-    data = LogParser.new('test_file.log')
+    data = LogParser.new('./spec/fixtures/test_file.log')
     expect(data.read_first_line).to eq("  0:00 ------------------------------------------------------------\n")
   end
 end
 
 describe '#json_output' do
   it 'should return the number of lines in a json object' do
-    data = LogParser.new('test_file.log')
-    expect(data.json_output).to eq({"test_file.log":{"lines":10}})
+    data = LogParser.new('./spec/fixtures/test_file.log')
+    expect(data.json_output).to eq({"./spec/fixtures/test_file.log":{"lines":10}})
   end
 end
