@@ -18,7 +18,7 @@ class LogParser
       "lines": lines_counter
       }
     }
-    end
+  end
 
   private
 
