@@ -4,8 +4,8 @@ json_object = {
     "./spec/fixtures/test_file.log": {
     "lines": 10,
     "players": ["Isgalamido", "Mocinha", "Dono da Bola", "Zeh"],
-    "kills": ["Dono da Bola"=> 1, "Isgalamido"=> 2],
-    "total_kills": 2
+    "kills": {"Dono da Bola"=> 1, "Isgalamido"=> 2},
+    "total_kills": 3
     }
   }
 
