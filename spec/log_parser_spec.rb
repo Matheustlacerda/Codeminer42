@@ -21,7 +21,7 @@ describe '#read_first_line' do
 end
 
 describe '#json_output' do
-  it 'should return the number of lines, players, players kill and total kill in a json object' do
+  it 'must return the number of lines, players, players kill and total kill in a json object' do
     data = LogParser.new('./spec/fixtures/test_file.log')
     expect(data.json_output).to eq(json_object)
   end
