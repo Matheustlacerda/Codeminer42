@@ -20,9 +20,9 @@ class LogParser
     }
     end
 
-    private
+  private
 
-    def lines_counter
-      File.readlines(@file_path).count
-    end
+  def lines_counter
+    File.readlines(@file_path).count
+  end
 end
