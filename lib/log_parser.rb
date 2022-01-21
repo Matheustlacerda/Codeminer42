@@ -16,7 +16,9 @@ class LogParser
     {
       "#{@file_path}": {
       "lines": lines_counter,
-      "players": players
+      "players": players,
+      "kills": players_kill,
+      "total_kills": total_kill
       }
     }
     end
@@ -40,5 +42,33 @@ class LogParser
             game_players.delete_at(game_players.index('<world>'))
           end
             game_players
+        end
+
+        def players_kill
+          killed_players = []
+          File.readlines(@file_path).each do |line|
+            if line.include? 'killed' then
+              if line.split('killed')[0].split(':').last.strip.include? '<world>' then
+                next
+              else
+                killed_players << line.split('killed')[0].split(':').last.strip
+              end
+            end
+          end
+          killed_players.tally
+        end
+
+        def total_kill
+          kills_counter = 0
+          File.readlines(@file_path).each do |line|
+            if line.include? 'killed' then
+              if line.split('killed')[0].split(':').last.strip.include? '<world>' then
+                next
+              else
+                kills_counter += 1
+              end
+            end
+          end
+          kills_counter
         end
 end
