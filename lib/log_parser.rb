@@ -1,13 +1,13 @@
+# frozen_string_literal: true
+
 require 'json'
 
 class LogParser
   def initialize(file_path)
     @file_path = file_path
-    unless File.exist?(@file_path)
-      raise StandardError.new "File not found"
-    end
+    raise StandardError, 'File not found' unless File.exist?(@file_path)
   end
-    
+
   def read_first_line
     File.readlines(@file_path).first
   end
@@ -15,8 +15,8 @@ class LogParser
   def json_output
     {
       "#{@file_path}": {
-      "lines": lines_counter,
-      "players": players
+        "lines": lines_counter,
+        "players": players
       }
     }
   end
@@ -30,11 +30,11 @@ class LogParser
   def players
     game_players = []
     File.readlines(@file_path).each do |line|
-      if line.include? 'killed' then
+      if line.include? 'killed'
         game_players << line.split('killed')[0].split(':').last.strip
         game_players << line.split('killed')[1].split('by').first.strip
       end
     end
-   game_players.uniq
+    game_players.uniq
   end
 end

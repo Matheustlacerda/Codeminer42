@@ -1,4 +1,6 @@
-require_relative "lib/log_parser"
+# frozen_string_literal: true
+
+require_relative 'lib/log_parser'
 
 file = LogParser.new('games.log')
 
