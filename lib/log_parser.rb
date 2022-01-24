@@ -35,6 +35,10 @@ class LogParser
         game_players << line.split('killed')[1].split('by').first.strip
       end
     end
-   game_players.uniq
+    game_players = game_players.uniq
+    if game_players.include? '<world>' then
+      game_players.delete_at(game_players.index('<world>'))
+    end
+    game_players
   end
 end
