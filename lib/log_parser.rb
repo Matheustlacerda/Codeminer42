@@ -15,8 +15,8 @@ class LogParser
   def json_output
     {
       "#{@file_path}": {
-        "lines": lines_counter,
-        "players": players
+        'lines': lines_counter,
+        'players': players_without_world
       }
     }
   end
@@ -36,7 +36,11 @@ class LogParser
       end
     end
     game_players = game_players.uniq
-    game_players.delete_at(game_players.index('<world>'))
-    game_players
+  end
+
+  def players_without_world
+    gamers = players
+    gamers.delete('<world>')
+    gamers
   end
 end

@@ -18,8 +18,8 @@ describe LogParser do
   describe '#json_output' do
     it 'must return the number of lines in a json object' do
       data = LogParser.new('./spec/fixtures/test_file.log')
-      expect(data.json_output).to eq({ "./spec/fixtures/test_file.log":
-        { "lines": 10, "players": ['Isgalamido', 'Mocinha', 'Dono da Bola', 'Zeh'] } })
+      expect(data.json_output).to eq({ './spec/fixtures/test_file.log':
+        { 'lines': 10, 'players': ['Isgalamido', 'Mocinha', 'Dono da Bola', 'Zeh'] } })
     end
   end
 end
