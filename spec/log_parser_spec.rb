@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative '../lib/log_parser'
 require_relative 'spec_helper'
+require_relative '../lib/log_parser'
 
 describe LogParser do
   describe '#initialize' do
