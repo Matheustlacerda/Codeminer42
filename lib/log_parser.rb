@@ -21,7 +21,7 @@ class LogParser
       "total_kills": total_kill
       }
     }
-    end
+  end
 
   private
 
