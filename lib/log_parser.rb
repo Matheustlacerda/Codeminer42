@@ -16,7 +16,7 @@ class LogParser
     {
       "#{@file_path}": {
         'lines': lines_counter,
-        'players': players_without_world
+        'players': remove_world
       }
     }
   end
