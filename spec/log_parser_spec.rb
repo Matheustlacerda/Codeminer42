@@ -1,4 +1,5 @@
 require_relative "../lib/log_parser"
+require_relative 'spec_helper'
 
 json_object = {
     "./spec/fixtures/test_file.log": {
