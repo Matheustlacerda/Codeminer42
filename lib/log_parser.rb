@@ -38,7 +38,7 @@ class LogParser
     game_players = game_players.uniq
   end
 
-  def players_without_world
+  def remove_world
     gamers = players
     gamers.delete('<world>')
     gamers
