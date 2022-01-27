@@ -41,7 +41,7 @@ class LogParser
     if game_players.include? '<world>' then
       game_players.delete_at(game_players.index('<world>'))
     end
-      game_players
+    game_players
   end
 
   def players_kill
