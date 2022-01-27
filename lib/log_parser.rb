@@ -59,16 +59,10 @@ class LogParser
   end
 
   def total_kill
-    kills_counter = 0
-    File.readlines(@file_path).each do |line|
-      if line.include? 'killed' then
-        if line.split('killed')[0].split(':').last.strip.include? '<world>' then
-          next
-        else
-          kills_counter += 1
-        end
-      end
-    end
-    kills_counter
+    File.readlines(@file_path).select do |line|
+      (line.include? 'killed') && (!line.split('killed')[0]
+                                        .split(':')
+                                        .last.strip.include? '<world>')
+    end.size
   end
 end
