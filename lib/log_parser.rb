@@ -17,7 +17,7 @@ class LogParser
       "#{@file_path}": {
       "lines": lines_counter,
       "players": players,
-      "kills": players_kill,
+      "kills": kills,
       "total_kills": total_kill
       }
     }
@@ -45,17 +45,60 @@ class LogParser
   end
 
   def players_kill
-    killed_players = []
+    player_kill = []
     File.readlines(@file_path).each do |line|
       if line.include? 'killed' then
         if line.split('killed')[0].split(':').last.strip.include? '<world>' then
           next
         else
-          killed_players << line.split('killed')[0].split(':').last.strip
+          player_kill << line.split('killed')[0].split(':').last.strip
         end
       end
     end
-    killed_players.tally
+    player_kill.tally
+  end
+
+  def world_kill
+    world_killed = []
+    File.readlines(@file_path).each do |line|
+      if line.include? 'killed' then
+        if line.split('killed')[0].split(':').last.strip.include? '<world>' then
+          world_killed << line.split('killed')[1].split('by').first.strip
+        end
+      end
+    end
+    world_killed.tally
+  end
+
+  def kill_itself
+    kill = []
+    File.readlines(@file_path).each do |line|
+      if line.include? 'killed' then
+        if line.split('killed')[0].split(':').last.strip == line.split('killed')[1].split('by').first.strip
+          kill << line.split('killed')[0].split(':').last.strip
+        end
+      end
+    end
+    kill.tally
+  end
+  
+  def kills
+    kills_counter = {}
+    players_kill.each do |player, number_kill|
+      world_kill.each do |player1, number_kill1|
+        if player == player1
+          kills_counter[player] = number_kill - number_kill1
+        end
+      end
+    end
+    kills_counter.each do |player, number_kill|
+      kill_itself.each do |player1, number_kill1|
+        if player == player1
+          kills_counter[player] = number_kill - number_kill1
+        end
+      end
+    end
+    kills_counter
   end
 
   def total_kill
