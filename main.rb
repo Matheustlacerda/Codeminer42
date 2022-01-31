@@ -1,4 +1,4 @@
-require_relative "lib/log_parser"
+require_relative 'lib/log_parser'
 
 file = LogParser.new('games.log')
 
