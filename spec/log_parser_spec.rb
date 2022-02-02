@@ -1,5 +1,7 @@
-require_relative "../lib/log_parser"
+# frozen_string_literal: true
+
 require_relative 'spec_helper'
+require_relative '../lib/log_parser'
 
 json_object = {
     "./spec/fixtures/test_file.log": {
@@ -11,12 +13,12 @@ json_object = {
   }
 
 describe LogParser do
-  describe '#read_first_line' do
-    it 'file must exist' do 
-      expect { LogParser.new('games.txt') }.to raise_error("File not found")
+  describe '#initialize' do
+    it 'file must exist' do
+      expect { LogParser.new('games.txt') }.to raise_error('File not found')
     end
 
-    it 'must have the text' do 
+    it 'must have the text' do
       data = LogParser.new('./spec/fixtures/test_file.log')
       expect(data.read_first_line).to eq("  0:00 ------------------------------------------------------------\n")
     end
