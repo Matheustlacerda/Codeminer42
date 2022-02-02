@@ -16,10 +16,20 @@ describe LogParser do
   end
 
   describe '#json_output' do
-    it 'must return the number of lines in a json object' do
+    let(:json_object) do
+      {
+        "./spec/fixtures/test_file.log": {
+          "lines": 10,
+          "players": ['Isgalamido', 'Mocinha', 'Dono da Bola', 'Zeh'],
+          "kills": { 'Dono da Bola' => 1, 'Isgalamido' => 2 },
+          "total_kills": 3
+        }
+      }
+    end
+      
+    it 'must return the number of lines, players, players kill and total kill in a json object' do
       data = LogParser.new('./spec/fixtures/test_file.log')
-      expect(data.json_output).to eq({ './spec/fixtures/test_file.log':
-        { 'lines': 10, 'players': ['Isgalamido', 'Mocinha', 'Dono da Bola', 'Zeh'] } })
+      expect(data.json_output).to eq(json_object)
     end
   end
 end

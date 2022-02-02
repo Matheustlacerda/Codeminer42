@@ -15,8 +15,10 @@ class LogParser
   def json_output
     {
       "#{@file_path}": {
-        'lines': lines_counter,
-        'players': remove_world
+        "lines": lines_counter,
+        "players": remove_world,
+        "kills": players_kill,
+        "total_kills": total_kill
       }
     }
   end
@@ -42,5 +44,25 @@ class LogParser
     gamers = players
     gamers.delete('<world>')
     gamers
+  end
+
+  def players_kill
+    killed_players = []
+    File.readlines(@file_path).each do |line|
+      next unless line.include? 'killed'
+      next if line.include? '<world>'
+
+      if killed_players << line.split('killed')[0].split(':').last.strip
+      end
+    end
+    killed_players.tally
+  end
+
+  def total_kill
+    File.readlines(@file_path).select do |line|
+      (line.include? 'killed') && (!line.split('killed')[0]
+                                        .split(':')
+                                        .last.strip.include? '<world>')
+    end.size
   end
 end
